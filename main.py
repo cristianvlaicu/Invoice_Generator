@@ -60,11 +60,18 @@ for filepath in filepaths:
     pdf.cell(w=36.5, h=8, txt="", border=1)
     pdf.cell(w=36.5, h=8, txt=str(total_sum), align="C", border=1, ln=1)
 
-    # Añadimos fila, una sola por cada página pdf (factura), donde diga el total a pagar.
+    # Añadimos fila, una sola por cada página pdf (factura), donde diga el total a pagar. Y luego añadimos otra fila donde ponemos el nombre de la empresa que hace esa factura.
     pdf.set_font(family="Times", size=12, style="B")
     pdf.set_text_color(C, C, C, )
     pdf.cell(w=0, h=8, ln=1)
     pdf.cell(w=0, h=8, ln=1)
     pdf.cell(w=0, h=8, txt=f"The total price to pay is: {total_sum} $.", align="C")
+
+    company_name = "Tech Solutions"
+    pdf.set_font(family="Times", size=14, style="IB")
+    pdf.set_text_color(C, C, C, )
+    pdf.cell(w=0, h=8, ln=1)
+    pdf.cell(w=0, h=8, ln=1)
+    pdf.cell(w=0, h=8, txt=f"{company_name.upper()} Group.", align="L")
 
     pdf.output(rf"PDFs\{filename}.pdf")
